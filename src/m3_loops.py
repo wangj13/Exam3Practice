@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  FOR and WHILE loops.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jixi Wang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -207,6 +207,32 @@ def practice_problem3(start, n, threshold):
       :type n:     int
       :type threshold: float
     """
+    item = []
+    while True:
+        if threshold > math.sqrt(2):
+            item +=[start]
+        if n==0:
+            return item
+        elif math.sin(start)+math.cos(start)>threshold:
+            item = item + [start]
+        start += 1
+        if len(item)>=n:
+            return item
+"""
+    item = []
+
+    while True:
+        if n == 0:
+            return item
+        elif math.sin(start) + math.cos(start) > threshold:
+            item = item + [start]
+        start += 1
+        if len(item)>=n:
+            return item
+"""
+
+
+
     ####################################################################
     # TODO: 3. Implement and test this function.
     #          Some tests are already written for you (above),

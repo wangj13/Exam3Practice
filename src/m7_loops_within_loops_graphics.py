@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jixi Wang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -29,12 +29,13 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 
 import rosegraphics as rg
+import math
 
 
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_hourglass()
-    run_test_many_hourglasses()
+    #run_test_many_hourglasses()
 
 
 def run_test_hourglass():
@@ -88,6 +89,58 @@ def hourglass(window, n, point, radius, color):
     where n and radius are positive and color is a string that denotes
     a color that rosegraphics understands.
     """
+    original = rg.Point(point.x, point.y)
+    for k in range(1, n + 1):
+        for j in range(k):
+            circle = rg.Circle(point, radius)
+            circle.fill_color = color
+            circle.attach_to(window)
+            rightside = point.x + radius
+            leftside = point.x - radius
+            start = rg.Point(rightside, point.y)
+            finish = rg.Point(leftside, point.y)
+            line = rg.Line(start, finish)
+            line.attach_to(window)
+            point.x += -(2 * radius)
+        point.x += (3+2 * j) * radius
+        point.y += (2 * radius ** 2 + radius ** 2) ** 0.5
+
+    point = original
+
+    for k in range(1, n + 1):
+        for j in range(k):
+            circle = rg.Circle(point, radius)
+            circle.fill_color = color
+            circle.attach_to(window)
+            rightside = point.x + radius
+            leftside = point.x - radius
+            start = rg.Point(rightside, point.y)
+            finish = rg.Point(leftside, point.y)
+            line = rg.Line(start, finish)
+            line.attach_to(window)
+            point.x += -(2 * radius)
+        point.x += (3 + 2 * j) * radius
+        point.y += -(2 * radius ** 2 + radius ** 2) ** 0.5
+    
+    window.render()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # ------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
     #       We provided some tests for you (above).
